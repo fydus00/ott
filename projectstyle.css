@@ -1,0 +1,412 @@
+@import "reset.css";
+/*This was all taken from https://tympanus.net/Development/ButtonStylesInspiration/ 
+but I needed to see it in CodePen
+*/
+
+/* 제목(header) + 버튼(nav) */
+@import url(https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600);
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: 'codropsicons';
+  src: url("../fonts/codropsicons/codropsicons.eot");
+  src: url("../fonts/codropsicons/codropsicons.eot?#iefix") format("embedded-opentype"), 
+  url("../fonts/codropsicons/codropsicons.woff") format("woff"), 
+  url("../fonts/codropsicons/codropsicons.ttf") format("truetype"), 
+  url("../fonts/codropsicons/codropsicons.svg#codropsicons") format("svg");
+}
+
+
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f1f6fb; 
+  font-size: 1em;
+  width: 100 auto;
+  height: auto;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 7%;
+}
+
+.hidden {
+  position: absolute;
+  width: 600;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+header {
+  width: auto;
+  height: auto;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  height: 90px;
+  justify-content: center; /*가로에서 가운데*/
+  align-items: center;  /*세로에서 가운데*/
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 상단(nav)으로 올라가는 버튼 */
+#TOP {
+  text-align: right;
+  margin-left: 0 auto;
+  margin-right: 0 auto;
+}
+
+/* 선택시 */
+#select {
+  float: left;
+  min-width: 50px;
+  max-width: 150px;
+  display: block;
+  margin: none;
+  background: none;
+  color: none;
+  /* vertical-align: middle; */
+  position: relative;
+  z-index: 1;
+  -webkit-backface-visibility: visible; /*이면 숨기기 / 보이려면 visible*/
+  font-size: large;
+}
+#select:focus {
+  outline: black;
+}
+
+
+
+/* Common button styles */
+.button {
+  float: center;
+  min-width: 50px;
+  max-width: 150px;
+  display: block;
+  margin: 1em 3em;
+  padding: 3em;
+  background: none;
+  color: inherit;
+  /* vertical-align: middle; */
+  position: relative;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+}
+.button:focus {
+  outline: none;
+}
+/* .button > span {
+  vertical-align: middle;
+} */
+
+
+/* 버튼 효과 */
+.button--itzel {
+    border: none;
+    padding: 0px;
+    overflow: hidden;
+    width: 255px;
+  }
+  .button--itzel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid;
+    border-radius: inherit;
+    -webkit-clip-path: polygon(0% 0%, 0% 100%, 35% 100%, 35% 60%, 65% 60%, 65% 100%, 100% 100%, 100% 0%);
+    clip-path: url(../index.html#clipBox);
+    -webkit-transform: translate3d(0, 100%, 0) translate3d(0, -2px, 0); 
+                      /*translate3d() = 해당 요소를 현재 위치에서 주어진 x,y,z축 거리만큼 이동*/
+    transform: translate3d(0, 100%, 0) translate3d(0, -2px, 0);
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+  }
+  
+  .button--itzel::before,
+  .button--itzel .button__icon {
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+    -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+    transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+  }
+
+  .button--itzel > span {
+    display: block;
+    padding: 20px;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
+    -webkit-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+  }
+
+  /* hover - 마우스 커서 올렸을때 효과 */
+  .button--itzel:hover::before {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  .button--itzel:hover .button__icon {
+    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+    -webkit-transform: translate3d(-50%, -100%, 0);
+    transform: translate3d(-50%, -100%, 0);
+  }
+  .button--itzel:hover > span {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, -50%, 0);
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+  }
+
+/* 내용 */
+#exp {
+  margin-top: 1em;
+  margin: 0 auto;
+  background-color: #f8fdf8;
+  min-height: 800px;
+  max-height: auto;
+  width: auto;
+  padding: 30px;
+  text-align: left;
+  align-items: center;
+  justify-content: center;
+}
+
+.png {
+  padding: 5%, 1%, 5%, 5%;
+  min-height: 450px;
+  width: auto;
+}
+
+.picture {
+  align-items: left;
+  width: 300px;
+  float: left;
+}
+
+img {
+  width: 300px;
+}
+
+.설명 {
+  margin-left: 2em;
+  min-width: 200px;
+  max-width: 60%;
+  text-align: left;
+  float: left;
+}
+
+footer{
+  font-size: 15px;
+  text-align: center;
+}
+
+#click {
+  font-size: 10px;
+  text-align: right;
+  color: navy;
+}
+
+#link {
+  text-align: center;
+  height: auto;
+}
+
+h2, h4 {
+  display: inline;
+}
+
+/* 가격비교 - com */
+#exp_com {
+  margin-top: 1em;
+  margin: 0 auto;
+  background-color: #f8fdf8;
+  min-height: 800px;
+  max-height: auto;
+  width: auto;
+  padding: 30px;
+  padding-top: 10%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.com_img {
+  position: relative;
+  height: 200px;
+}
+
+.c_img_ img{
+  transition: all 0.5s linear;
+}
+
+.c_img_ img:hover{   /* 사진 위에 마우스 올렸을 때 */
+  transform: scale(2.5);  /* 2.5배 확대 */
+  transition: transform 1s;
+}
+
+.coming_txt_B{
+  position: absolute;
+  top: 3%;
+  left: 4%;
+  /* transform: translate(-50%, -50%); */
+  color: black;
+}
+
+.coming_txt_W{
+  position: absolute;
+  top: 3%;
+  left: 4%;
+  /* transform: translate(-50%, -50%); */
+  color: white;
+}
+
+
+/* recom.html 의 바로가기 버튼 */
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+button {
+  margin: 10px;
+}
+
+@keyframes ring {
+  0% {
+      width: 30px;
+      height: 30px;
+      opacity: 1;
+  }
+  100% {
+      width: 100px;
+      height: 100px;
+      opacity: 0;
+  }
+}
+
+.w-btn-neon2, .name {
+  position: relative;
+  border: none;
+  min-width: 90px;
+  min-height: 30px;
+  background: none;
+  border-radius: 1000px;
+  color: gray;
+  cursor: pointer;
+  box-shadow: 5px 5px 5px rgba(10, 10, 10, 0.44);
+  font-weight: 300;
+  transition: 0.3s;
+}
+
+.w-btn-neon2:hover {
+  transform: scale(1.2);
+}
+
+.w-btn-neon2:hover::after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 6px solid #f1f6fb;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+.recom {
+  padding: 15px;
+  min-height: 600px;
+  max-height: auto;
+  display: inline-block;
+  width: auto;
+  /* background-color: aqua; */
+}
+
+.name {
+  padding: 15px;
+  height: 40px;
+  min-width: 60px;
+  max-width: 500px;
+  text-align: left;
+  /* background-color: bisque; */
+}
+
+a{
+  text-decoration: none;
+  color: darkblue;
+}
+
+.t{
+  color: darkslategrey;
+}
+
+.v {
+  text-align: left;
+  margin-top: 1em;
+}
+
+.video {
+  height: 0;
+  padding-bottom: 30%;
+  position: relative;
+  overflow: hidden;
+  width: 50%;
+  float: left;
+  /* background-color: purple; */
+}
+
+.video iframe {
+  position: absolute;
+  width: 100%;
+  height: 90%;
+  top: 0;
+  left: 0;
+}
+
+.video h6{
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+}
+
+
+.설명1 {
+  /* margin-left: 5%; */
+  height: auto;
+  width: 45%;
+  float: right;
+   /* background-color: plum; */
+}
+
+.줄거리 {
+  height: auto;
+  min-width: none;
+  max-width: auto;
+  float: left;
+  margin-top: 0;
+  padding-top: 0;
+  position: relative;
+  top: 0;
+  left: 20px;
+}
